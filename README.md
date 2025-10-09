@@ -1,1 +1,5 @@
-# matias-web-page
+# Matias página web
+
+Instalar depedencias
+> composer install
+
