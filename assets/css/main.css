@@ -1306,37 +1306,35 @@ section,
 .starter-section {
   /* Add your styles here */
 }
-/* CONTENEDOR RECIORTADO */
 .video-wrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: calc(100vh - 100px); /* tu altura visible */
+  height: calc(100svh - 100px); /* versión segura para móviles */
 }
 
-/* VIDEO */
 .video-bg {
   position: absolute;
-  top: -70px; /* recorte desde arriba */
+  top: -70px;
   left: 50%;
   transform: translateX(-50%) scale(1.2);
-  /* el scale evita que se vea la parte de abajo */
-
-  width: 100vw;        /* fill horizontal */
-  height: auto;
-  min-height: calc(100% + 100px); /* compensa recorte */
+  width: 100%;
+  height: 120%;              /* evita cortes */
   object-fit: cover;
   object-position: center;
+  pointer-events: none;
 }
 
-/* MOBILE FIX */
-@media (max-width: 768px) {
-  .video-wrapper {
-    height: calc(100vh - 100px);
-  }
+/* FIX para iPhone Safari */
+video::-webkit-media-controls {
+  display: none !important;
+}
 
+/* MOBILE */
+@media (max-width: 768px) {
   .video-bg {
+    top: -120px;          /* recorte extra */
+    height: 140%;         /* más zoom */
     transform: translateX(-50%) scale(1.3);
-    /* aumenta el zoom para asegurar que NO se vea el borde */
   }
 }
